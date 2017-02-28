@@ -1,0 +1,33 @@
+body {
+    font-family: Georgia, Helvetica, serif;
+    font-size: 25px;
+    background-color: #262626;
+    color: white;
+    cursor: auto;
+}
+
+.vertical {
+    writing-mode: vertical-lr;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+.horizontal {
+    display: inline-block;
+    writing-mode: horizontal-tb;
+    width: 100%;
+    text-align: center;
+}
+
+.content {
+    text-align: left;
+    display: inline-block;
+    padding: .5em 1em;
+}
+
+span {
+    color: dodgerblue;
+    border-bottom: 1px dotted #fff;
+    cursor: col-resize;
+}
