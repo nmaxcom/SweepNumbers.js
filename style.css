@@ -3,7 +3,6 @@ body {
     font-size: 25px;
     background-color: #262626;
     color: white;
-    cursor: auto;
 }
 
 .content {
@@ -14,7 +13,26 @@ body {
 }
 
 span {
-    color: dodgerblue;
+    color: #00e0ff;
     /*border-bottom: 1px dotted #fff;*/
+}
+
+.SweepNumberJS {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 17px;
+}
+
+.SweepNumberJS:before {
+    content: "\21CB";
+    position: absolute;
+    left: -21px;
+    top: 15px;
+}
+
+.sweep {
     cursor: col-resize;
 }
