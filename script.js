@@ -1,10 +1,18 @@
-(function(){
+/**
+ * Nano library to change the value of numbers in the DOM by sweeping them left or right
+ *
+ * - todo: re-write to 100% ES6
+ */
+
+{
     'use strict';
 
     window.onload = function(){
 
-        var $sweeps = document.querySelectorAll('.sweep');
-        for(var i = 0, len = $sweeps.length; i < len; i++){
+        let $sweeps = document.querySelectorAll('.sweep');
+        if (!$sweeps>0) return;
+
+        for(let i = 0, len = $sweeps.length; i < len; i++){
             console.info($sweeps[i]);
 
             $sweeps[i].onmouseover = document.body.style.cursor = 'ew-resize';
@@ -33,9 +41,9 @@
             }
         };
 
-        document.onmouseup   = () =>{
+        document.onmouseup = () =>{
             dragging = false;
         };
     };
-}());
+}
 
