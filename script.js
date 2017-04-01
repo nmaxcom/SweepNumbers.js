@@ -15,37 +15,38 @@
         if(!$sweeps > 0) return;
 
         for(let i = 0, len = $sweeps.length; i < len; i++){
+            let startingX, target, originalValue, dragging;
+
             console.info($sweeps[i]);
 
             $sweeps[i].addEventListener('mouseover', () => document.body.style.cursor = 'ew-resize');
-            $sweeps[i].addEventListener('mouseout', () => document.body.style.cursor = 'default');
+            $sweeps[i].addEventListener('mouseout', ()=>{
+                if(!dragging)
+                    document.body.style.cursor = 'default';
+            });
+            $sweeps[i].addEventListener('mousedown', (e)=>{
+                if(e.target.className === 'sweep'){
+                    e.preventDefault();
+                    target        = e.target;
+                    originalValue = e.target.innerHTML;
+                    startingX     = e.pageX;
+                    dragging      = true;
+                }
+            });
+            $sweeps[i].addEventListener('mousedown', (e)=>{
+                if(dragging){
+                    let moved         = Math.floor((e.pageX - startingX) * 0.01 * originalValue);
+                    target.innerHTML  = parseInt(originalValue) + moved;
+                    let $result       = document.getElementById('result');
+                    let $input1       = document.querySelectorAll('.sweep')[0].innerHTML;
+                    let $input2       = document.querySelectorAll('.sweep')[1].innerHTML;
+                    $result.innerHTML = parseInt($input1) + parseInt($input2);
+                }
+            });
+            document.onmouseup = () =>{
+                dragging = false;
+            };
         }
-
-        let startingX, target, originalValue, dragging;
-        document.onmousedown = (e) =>{
-            if(e.target.className === 'sweep'){
-                e.preventDefault();
-                target        = e.target;
-                originalValue = e.target.innerHTML;
-                startingX     = e.pageX;
-                dragging      = true;
-            }
-        };
-
-        document.onmousemove = (e) =>{
-            if(dragging){
-                let moved         = Math.floor((e.pageX - startingX) * 0.01 * originalValue);
-                target.innerHTML  = parseInt(originalValue) + moved;
-                let $result       = document.getElementById('result');
-                let $input1       = document.querySelectorAll('.sweep')[0].innerHTML;
-                let $input2       = document.querySelectorAll('.sweep')[1].innerHTML;
-                $result.innerHTML = parseInt($input1) + parseInt($input2);
-            }
-        };
-
-        document.onmouseup = () =>{
-            dragging = false;
-        };
     };
 }
 

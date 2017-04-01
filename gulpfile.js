@@ -1,3 +1,5 @@
+/*eslint-env node*/
+
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
 
@@ -12,7 +14,7 @@ gulp.task('default', function() {
     // Serve files from the root of this project
     browserSync.init({
         server: {
-            baseDir: "./"
+            baseDir: './'
         }
     });
 
