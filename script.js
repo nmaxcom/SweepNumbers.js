@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Nano library to change the value of numbers in the DOM by sweeping them left or right
  *
@@ -6,61 +7,61 @@
  *
  */
 
-{
-    'use strict';
+let Sweep = (options = false)=>{
+    /**
+     * Merely for debugging purposes
+     */
+        // function d(value,label){
+        //     console.info(`${label}: ${value}`);
+        //     return value;
+        // }
 
-    window.onload = ()=>{
-        /**
-         * Merely for debugging purposes
-         */
-        function d(value,label){
-            console.info(`${label}: ${value}`);
-            return value;
+    let $sweeps = document.querySelectorAll('span.sweep');
+    if(!$sweeps > 0) return;
+
+    let startingX, target, originalNumber, dragging;
+
+    function restoreIcon(){
+        document.body.style.cursor = 'default';
+    }
+
+    function mouseoverF(){
+        document.body.style.cursor = 'ew-resize';
+    }
+
+
+    function mouseoutF(){
+        if(!dragging)
+            restoreIcon();
+    }
+
+    function mousedownF(e){
+        e.preventDefault();
+        target         = e.target;
+        originalNumber = e.target.innerHTML;
+        startingX      = e.pageX;
+        dragging       = true;
+    }
+
+    function mousemoveF(e){
+        if(dragging){
+            let moved        = Math.floor(e.pageX - startingX);
+            target.innerHTML = parseInt(originalNumber) + moved;
         }
+    }
 
-        let $sweeps = document.querySelectorAll('span.sweep');
-        if(!$sweeps > 0) return;
-        function restoreIcon(){
-            document.body.style.cursor = 'default';
-        }
+    function mouseupF(){
+        dragging = false;
+        restoreIcon();
+    }
 
-        for(let i = 0, len = $sweeps.length; i < len; i++){
-            let startingX, target, originalNumber, dragging;
+    for(let i = 0, len = $sweeps.length; i < len; i++){
+        $sweeps[i].addEventListener('mouseover', mouseoverF);
+        $sweeps[i].addEventListener('mouseout', mouseoutF);
+        $sweeps[i].addEventListener('mousedown', mousedownF);
+        document.addEventListener('mousemove', mousemoveF);
+        document.addEventListener('mouseup', mouseupF);
+    }
+};
 
-            // console.info($sweeps[i]);
-
-            $sweeps[i].addEventListener('mouseover', () =>{
-                // console.info('mouseover');
-
-                document.body.style.cursor = 'ew-resize';
-            });
-            $sweeps[i].addEventListener('mouseout', ()=>{
-                // console.info('mouseout');
-
-                if(!dragging)
-                    restoreIcon();
-            });
-            $sweeps[i].addEventListener('mousedown', (e)=>{
-                // console.info('mousedown');
-                e.preventDefault();
-                target         = e.target;
-                originalNumber = e.target.innerHTML;
-                startingX      = e.pageX;
-                dragging       = true;
-            });
-            document.addEventListener('mousemove', (e)=>{
-                // console.info('mousemove');
-                if(dragging){
-                    let moved        = Math.floor(d((e.pageX - startingX),'e.pageX - startingX'));
-                    target.innerHTML = parseInt(originalNumber) + moved;
-                }
-            });
-            document.addEventListener('mouseup', () =>{
-                // console.info('mouseup');
-                dragging = false;
-                restoreIcon();
-            });
-        }
-    };
-}
 
