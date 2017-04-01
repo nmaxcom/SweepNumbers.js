@@ -9,7 +9,14 @@
 {
     'use strict';
 
-    window.onload = function(){
+    window.onload = ()=>{
+        /**
+         * Merely for debugging purposes
+         */
+        function d(value,label){
+            console.info(`${label}: ${value}`);
+            return value;
+        }
 
         let $sweeps = document.querySelectorAll('span.sweep');
         if(!$sweeps > 0) return;
@@ -20,21 +27,21 @@
         for(let i = 0, len = $sweeps.length; i < len; i++){
             let startingX, target, originalNumber, dragging;
 
-            console.info($sweeps[i]);
+            // console.info($sweeps[i]);
 
-            $sweeps[i].addEventListener('mouseover', () => {
-                console.info('mouseover');
+            $sweeps[i].addEventListener('mouseover', () =>{
+                // console.info('mouseover');
 
                 document.body.style.cursor = 'ew-resize';
             });
             $sweeps[i].addEventListener('mouseout', ()=>{
-                console.info('mouseout');
+                // console.info('mouseout');
 
                 if(!dragging)
                     restoreIcon();
             });
             $sweeps[i].addEventListener('mousedown', (e)=>{
-                console.info('mousedown');
+                // console.info('mousedown');
                 e.preventDefault();
                 target         = e.target;
                 originalNumber = e.target.innerHTML;
@@ -42,14 +49,14 @@
                 dragging       = true;
             });
             document.addEventListener('mousemove', (e)=>{
-                console.info('mousemove');
+                // console.info('mousemove');
                 if(dragging){
-                    let moved         = Math.floor((e.pageX - startingX) * 0.01 * originalNumber);
-                    target.innerHTML  = parseInt(originalNumber) + moved;
+                    let moved        = Math.floor(d((e.pageX - startingX),'e.pageX - startingX'));
+                    target.innerHTML = parseInt(originalNumber) + moved;
                 }
             });
             document.addEventListener('mouseup', () =>{
-                console.info('mouseup');
+                // console.info('mouseup');
                 dragging = false;
                 restoreIcon();
             });
