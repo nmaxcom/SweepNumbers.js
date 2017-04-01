@@ -13,39 +13,46 @@
 
         let $sweeps = document.querySelectorAll('span.sweep');
         if(!$sweeps > 0) return;
+        function restoreIcon(){
+            document.body.style.cursor = 'default';
+        }
 
         for(let i = 0, len = $sweeps.length; i < len; i++){
-            let startingX, target, originalValue, dragging;
+            let startingX, target, originalNumber, dragging;
 
             console.info($sweeps[i]);
 
-            $sweeps[i].addEventListener('mouseover', () => document.body.style.cursor = 'ew-resize');
+            $sweeps[i].addEventListener('mouseover', () => {
+                console.info('mouseover');
+
+                document.body.style.cursor = 'ew-resize';
+            });
             $sweeps[i].addEventListener('mouseout', ()=>{
+                console.info('mouseout');
+
                 if(!dragging)
-                    document.body.style.cursor = 'default';
+                    restoreIcon();
             });
             $sweeps[i].addEventListener('mousedown', (e)=>{
-                if(e.target.className === 'sweep'){
-                    e.preventDefault();
-                    target        = e.target;
-                    originalValue = e.target.innerHTML;
-                    startingX     = e.pageX;
-                    dragging      = true;
-                }
+                console.info('mousedown');
+                e.preventDefault();
+                target         = e.target;
+                originalNumber = e.target.innerHTML;
+                startingX      = e.pageX;
+                dragging       = true;
             });
-            $sweeps[i].addEventListener('mousedown', (e)=>{
+            document.addEventListener('mousemove', (e)=>{
+                console.info('mousemove');
                 if(dragging){
-                    let moved         = Math.floor((e.pageX - startingX) * 0.01 * originalValue);
-                    target.innerHTML  = parseInt(originalValue) + moved;
-                    let $result       = document.getElementById('result');
-                    let $input1       = document.querySelectorAll('.sweep')[0].innerHTML;
-                    let $input2       = document.querySelectorAll('.sweep')[1].innerHTML;
-                    $result.innerHTML = parseInt($input1) + parseInt($input2);
+                    let moved         = Math.floor((e.pageX - startingX) * 0.01 * originalNumber);
+                    target.innerHTML  = parseInt(originalNumber) + moved;
                 }
             });
-            document.onmouseup = () =>{
+            document.addEventListener('mouseup', () =>{
+                console.info('mouseup');
                 dragging = false;
-            };
+                restoreIcon();
+            });
         }
     };
 }
