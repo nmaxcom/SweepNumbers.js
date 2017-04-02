@@ -1,4 +1,4 @@
-# SweepNumbers.js
+# SweepNumbers.js (Beta, active development)
 A micro library to change the number values in the DOM by sweeping them left or right. Or clicking on the number! It has various nifty options.
 
 ### Development
