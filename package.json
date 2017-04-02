@@ -1,7 +1,7 @@
 {
   "name": "geniusNotes",
   "version": "1.0.0",
-  "description": "Nano library to change the value of numbers in the DOM by sweeping them left or right",
+  "description": "A micro library to change the number values in the DOM by sweeping them left or right",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

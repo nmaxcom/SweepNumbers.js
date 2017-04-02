@@ -1,9 +1,9 @@
 'use strict';
 /**
- * Nano library to change the value of numbers in the DOM by sweeping them left or right
+ * A micro library to change the number values in the DOM by sweeping them left or right
  *
  * Surround the number you want to activate with a span tag, class "sweep" like so:
- * <h3> <span class="sweep"> 104 </span> </h3>
+ * <h3><span class="sweep">104</span></h3>
  *
  */
 

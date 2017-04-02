@@ -1,0 +1,70 @@
+body {
+    font-family: 'Proxima Nova', Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #262626;
+    color: white;
+    margin: 0;
+}
+
+.content {
+    text-align: center;
+    margin: 130px auto 0;
+}
+
+span {
+    font-family: 'Georgia', serif;
+}
+
+span.sweep {
+    color: #00e0ff;
+}
+
+#result {
+    color: #ff8343;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: white;
+    color: #000;
+}
+
+.SweepNumberJS {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 17px;
+}
+
+.SweepNumberJS:before {
+    content: "\21CB";
+    position: absolute;
+    left: -21px;
+    top: 15px;
+}
+
+.SweepNumberJS > p {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+img {
+    width: 20px;
+}
+
+p.small {
+    font-size: 12px;
+    font-weight: 100;
+    font-family: sans-serif;
+    opacity: 0.2;
+}
+
+p {
+    opacity: 0.8;
+}

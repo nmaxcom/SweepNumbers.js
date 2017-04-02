@@ -14,7 +14,8 @@ gulp.task('default', function() {
     // Serve files from the root of this project
     browserSync.init({
         server: {
-            baseDir: './'
+            baseDir: './',
+            index:'examples.html'
         }
     });
 
@@ -22,4 +23,5 @@ gulp.task('default', function() {
     // all browsers reload after tasks are complete.
     gulp.watch('*.html', ['reload']);
     gulp.watch('*.js', ['reload']);
+    gulp.watch('*.css', ['reload']);
 });
