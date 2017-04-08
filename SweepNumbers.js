@@ -7,7 +7,7 @@
  *
  */
 
-let Sweep = (options = false)=>{
+let Sweep = (options = false) =>{
     /**
      * Merely for debugging purposes
      */
@@ -66,24 +66,20 @@ let Sweep = (options = false)=>{
         let $input = document.createElement('input');
         $input.classList.add('sweep');
         $input.value = event.target.innerText;
-        $input.addEventListener('keypress', (event)=>{
+        $input.addEventListener('keypress', (event) =>{
             if(event.key === 'Enter'){
-                event.target.blur();
+                let $span = document.createElement('span');
+                $span.classList.add('sweep');
+                $span.innerText = $input.value;
+                $span.addEventListener('mouseover', mouseoverF);
+                $span.addEventListener('mouseout', mouseoutF);
+                $span.addEventListener('mousedown', mousedownF);
+                $span.addEventListener('click', clickF);
+                $input.parentNode.replaceChild($span, event.target);
             }
         });
         event.target.parentNode.replaceChild($input, event.target);
         $input.focus();
-
-        $input.addEventListener('blur', (event)=>{
-            let $span = document.createElement('span');
-            $span.classList.add('sweep');
-            $span.innerText = event.target.value;
-            $span.addEventListener('mouseover', mouseoverF);
-            $span.addEventListener('mouseout', mouseoutF);
-            $span.addEventListener('mousedown', mousedownF);
-            $span.addEventListener('click', clickF);
-            event.target.parentNode.replaceChild($span, event.target);
-        });
     }
 
     for(let i = 0, len = $sweeps.length; i < len; i++){

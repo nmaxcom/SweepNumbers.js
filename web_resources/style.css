@@ -11,16 +11,37 @@ body {
     margin: 130px auto 0;
 }
 
-span {
-    font-family: 'Georgia', serif;
+/**********************/
+/* Programatizarlo
+/**********************/
+input.sweep {
+    background-color: transparent;
+    border: none;
+    font-size: 35px;
+    text-align: center;
+    color: #00e0ff;
+    font-family: Georgia, serif;
+    font-weight: bold;
 }
+
+input.sweep:focus {
+    outline: none;
+}
+
+/**********************/
 
 span.sweep {
     color: #00e0ff;
+    font-family: 'Georgia', serif;
+    font-size: 35px;
+    font-weight: bold;
 }
 
 #result {
     color: #ff8343;
+    font-family: 'Georgia', serif;
+    font-size: 35px;
+    font-weight: bold;
 }
 
 footer {
@@ -63,6 +84,10 @@ p.small {
     font-weight: 100;
     font-family: sans-serif;
     opacity: 0.2;
+}
+
+p.big {
+    font-size: 35px;
 }
 
 p {
