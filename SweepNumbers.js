@@ -4,6 +4,8 @@
  *
  * Surround the number you want to activate with a span tag, class "sweep" like so:
  * <h3><span class="sweep">104</span></h3>
+ *
+ * It's designed to work only with integers, both positive and negative.
  */
 
 let Sweep = (options = false) =>{
@@ -13,7 +15,7 @@ let Sweep = (options = false) =>{
     const $sweeps          = document.querySelectorAll('span.sweep');
     // Browser standard valid cursors
     inOptions.validCursors = ['auto', 'default', 'context-menu', 'help', 'pointer', 'progress', 'wait', 'cell', 'crosshair', 'text', 'vertical-text', 'alias', 'copy', 'move', 'no-drop', 'not-allowed', 'all-scroll', 'col-resize', 'row-resize', 'n-resize', 'e-resize', 's-resize', 'w-resize', 'ns-resize', 'ew-resize', 'ne-resize', 'nw-resize', 'se-resize', 'sw-resize', 'nesw-resize', 'nwse-resize'];
-    // No span.sweep's? Nothing to do in this page
+    // No span.sweep's? Nothing to do
     if(!$sweeps > 0) return;
 
     let startingX,      // x coordinate of the mouse when started dragging
@@ -31,9 +33,6 @@ let Sweep = (options = false) =>{
         // These need to be 'listened' by the document
         document.addEventListener('mousemove', mousemoveF);
         document.addEventListener('mouseup', mouseupF);
-
-        // We'll also make sure they're sized accordingly
-
     }
 
     /**
@@ -106,11 +105,16 @@ let Sweep = (options = false) =>{
         let $input = document.createElement('input');
         $input.classList.add('sweep');
         $input.value = event.target.innerText;
+        $input.setAttribute('size', ($input.value.toString().length + 1).toString());
         $input.addEventListener('keypress', event =>{
             if(event.key === 'Enter') transformToSpan(event);
         });
-        $input.addEventListener('blur', event =>{
-            transformToSpan(event);
+        // $input.addEventListener('blur', event =>{
+        //     transformToSpan(event);
+        // });
+        $input.addEventListener('input', () =>{
+            // +1 because font may not be monospace and the number would look squashed
+            $input.setAttribute('size', ($input.value.toString().length + 1).toString());
         });
         event.target.parentNode.replaceChild($input, event.target);
         $input.focus();
