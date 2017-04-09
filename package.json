@@ -1,6 +1,6 @@
 {
   "name": "geniusNotes",
-  "version": "1.0.0",
+  "version": "0.9.6",
   "description": "A micro library to change the number values in the DOM by sweeping them left or right",
   "main": "index.html",
   "scripts": {
