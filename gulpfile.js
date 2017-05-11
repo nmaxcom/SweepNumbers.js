@@ -1,7 +1,8 @@
 /*eslint-env node*/
 
-var gulp        = require('gulp');
-var browserSync = require('browser-sync').create();
+let gulp = require('gulp');
+let browserSync = require('browser-sync').create();
+let basedir = 'examples';
 
 gulp.task('reload', function(done) {
     browserSync.reload();
@@ -14,14 +15,14 @@ gulp.task('default', function() {
     // Serve files from the root of this project
     browserSync.init({
         server: {
-            baseDir: './',
-            index:'examples.html'
-        }
+            baseDir: '.',
+        },
+        startPath: '/examples/examples.html'
     });
 
     // add browserSync.reload to the tasks array to make
     // all browsers reload after tasks are complete.
-    gulp.watch('*.html', ['reload']);
-    gulp.watch('*.js', ['reload']);
-    gulp.watch('*.css', ['reload']);
+    gulp.watch(basedir + '*.html', ['reload']);
+    gulp.watch(basedir + '*.js', ['reload']);
+    gulp.watch(basedir + '*.css', ['reload']);
 });
