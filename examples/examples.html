@@ -13,7 +13,7 @@
 
     <div class="content">
         <p>You can easily test the basic functionality:</p>
-        <p class="big"><input type="text" class="sweep" value="120"></p>
+        <p class="big"><input type="text" class="sweep" value="820"></p>
         <p class="small">Drag the number left or right all the way. You can also click to type and click out or press enter</p>
 
 
@@ -37,10 +37,7 @@
     <script src="../lib/SweepNumbers.js"></script>
     <script>
         window.onload = () => {
-            Sweep({
-                selector: 'input.sweep',
-                clickEditable: false
-            });
+            Sweep();
             let $t1 = document.getElementById('t1');
             let $t2 = document.getElementById('t2');
             let $result = document.getElementById('result');
