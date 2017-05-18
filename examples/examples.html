@@ -37,7 +37,10 @@
     <script src="../lib/SweepNumbers.js"></script>
     <script>
         window.onload = () => {
-            Sweep();
+            Sweep({
+                suffix:'USD ',
+                prefix:'$'
+            });
             let $t1 = document.getElementById('t1');
             let $t2 = document.getElementById('t2');
             let $result = document.getElementById('result');
