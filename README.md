@@ -1,6 +1,8 @@
 # SweepNumbers.js (Beta, active development)
 A micro library to change the number values in the DOM by sweeping them left or right. Or clicking on the number! It has various nifty options.
 
+Notice: I'm converting it to a react component; basically starting from scratch...
+
 ### Development
 Everything is set to go to develop on SweepNumbers.js without pain:
 
