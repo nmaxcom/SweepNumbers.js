@@ -1,5 +1,5 @@
 {
-  "name": "geniusNotes",
+  "name": "sweep-numbers",
   "version": "0.9.6",
   "description": "A micro library to change the number values in the DOM by sweeping them left or right",
   "main": "index.html",
