@@ -21,7 +21,7 @@
 
         <br>
         <p>This is a small demostration of the next project I'll work in that made me write SweepNumbers.js first:</p>
-        <p class="big"><span class="sweep" id="t1">120</span> + <span class="sweep" id="t2">40</span> = <span id="result">160</span></p>
+        <p class="big"><input class="sweep" id="t1" value="23"></input> + <input class="sweep" id="t2" value="49"></input> = <span id="result">160</span></p>
     </div>
     <footer>
         <div class="SweepNumberJS">
@@ -38,8 +38,8 @@
     <script>
         window.onload = () => {
             Sweep({
-                suffix:'USD ',
-                prefix:'$'
+                // suffix:'USD ',
+                // prefix:'$'
             });
             let $t1 = document.getElementById('t1');
             let $t2 = document.getElementById('t2');
@@ -49,7 +49,8 @@
             });
 
             function resUpdate(event = null) {
-                $result.innerHTML = parseInt($t1.innerHTML) + parseInt($t2.innerHTML);
+                $result.innerHTML = parseInt($t1.dataset.value) + parseInt($t2.dataset.value);
+                console.log(parseInt($t1.innerHTML) + parseInt($t2.innerHTML));
             }
             let config = {
                 attributes: true,
